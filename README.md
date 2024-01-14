@@ -1,2 +1,2 @@
 # DRF
-Djnago Rest Framework
+Django Rest Framework
