@@ -9,10 +9,6 @@ class UserRegister(APIView):
     def post(self , request):
         serz_data = UserRegisterSerializer(data=request.POST)
         if serz_data.is_valid():
-            User.objects.create_user(
-                username = serz_data.validated_data['username'],
-                email = serz_data.validated_data['email'],
-                password=serz_data.validated_data['password'],
-            )
+            serz_data.create(serz_data.validated_data)
             return Response(serz_data.data)
         return Response(serz_data.errors)
